@@ -1,99 +1,99 @@
 package save;
 
-import board_teacher.Post;
+
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Board {
 
-    private static Scanner sc = new Scanner(System.in);
-
-    public static void main(String[] args) {
-
-        ArrayList<Post> posts = new ArrayList<>();
-
-        int lastestId = 1;
-
-        while (true) {
-            System.out.print("명령어 : "); // 입력 표시
-            String commend = sc.nextLine();
-
-            if (commend.equals("exit")) {
-                System.out.println("프로그램을 종료합니다.");
-                break;
-            } else if (commend.equals("add")) {
-                System.out.print("게시물 제목을 입력해주세요 : ");
-                String title = sc.nextLine();
-                System.out.print("게시물 내용을 입력해주세요 : ");
-                String body = sc.nextLine();
-
-                Post post = new Post(lastestId, title, body);
-//                post.setTitle(title);
-//                post.setBody(body);
-
-                posts.add(post);
-                System.out.println("게시물이 등록되었습니다.");
-                lastestId++;
-
-            } else if (commend.equals("list")) {
-                System.out.println("==============");
-                for (Post post : posts) {
-                    System.out.printf("번호 : %d \n", post.getId());
-                    System.out.printf("제목 : %s \n", post.getTitle());
-                    //System.out.printf("내용 : %s \n", post.getBody());
-                    System.out.println("==============");
-                }
-            } else if (commend.equals("update")) {
-                System.out.print("수정할 게시물 번호 : ");
-                int targetId = Integer.parseInt(sc.nextLine());
-
-                for (Post post : posts) {
-                    if (post.getId() == targetId) {
-                        System.out.print("수정할 제목 : ");
-                        String newTitle = sc.nextLine();
-                        System.out.print("수정할 내용 : ");
-                        String newBody = sc.nextLine();
-
-                        post.setTitle(newTitle);
-                        post.setTitle(newBody);
-
-                        System.out.println("수정이 완료되었습니다.");
-                        break; // 수정이 되면 멈춤 (같은 번호일때만 진행됨)
-                    }
-                }
-
-//                if (targetIdx < 0 || targetIdx >= posts.size()) {
-//                    System.out.println("없는 게시물 번호입니다.");
-//                    continue;
+//    private static Scanner sc = new Scanner(System.in);
+//
+//    public static void main(String[] args) {
+//
+//        ArrayList<Post> posts = new ArrayList<>();
+//
+//        int lastestId = 1;
+//
+//        while (true) {
+//            System.out.print("명령어 : "); // 입력 표시
+//            String commend = sc.nextLine();
+//
+//            if (commend.equals("exit")) {
+//                System.out.println("프로그램을 종료합니다.");
+//                break;
+//            } else if (commend.equals("add")) {
+//                System.out.print("게시물 제목을 입력해주세요 : ");
+//                String title = sc.nextLine();
+//                System.out.print("게시물 내용을 입력해주세요 : ");
+//                String body = sc.nextLine();
+//
+//                Post post = new Post(lastestId, title, body);
+////                post.setTitle(title);
+////                post.setBody(body);
+//
+//                posts.add(post);
+//                System.out.println("게시물이 등록되었습니다.");
+//                lastestId++;
+//
+//            } else if (commend.equals("list")) {
+//                System.out.println("==============");
+//                for (Post post : posts) {
+//                    System.out.printf("번호 : %d \n", post.getId());
+//                    System.out.printf("제목 : %s \n", post.getTitle());
+//                    //System.out.printf("내용 : %s \n", post.getBody());
+//                    System.out.println("==============");
 //                }
-
-
-            } else if (commend.equals("delete")) {
-                System.out.print("삭제할 게시물 번호");
-                Post selPost = findPostById(posts);
-
-                posts.remove(selPost);
-
-                if (selPost == null){
-                    System.out.println();
-                }
-            }
-
-        }
-
-
-    }
-
-    public static Post findPostById(ArrayList<Post> posts){
-        int targetId = Integer.parseInt(sc.nextLine());
-        for (Post post : posts) {
-            if (post.getId() == targetId) {
-                return post;
-            }
-        }
-            return null;
-    }
+//            } else if (commend.equals("update")) {
+//                System.out.print("수정할 게시물 번호 : ");
+//                int targetId = Integer.parseInt(sc.nextLine());
+//
+//                for (Post post : posts) {
+//                    if (post.getId() == targetId) {
+//                        System.out.print("수정할 제목 : ");
+//                        String newTitle = sc.nextLine();
+//                        System.out.print("수정할 내용 : ");
+//                        String newBody = sc.nextLine();
+//
+//                        post.setTitle(newTitle);
+//                        post.setTitle(newBody);
+//
+//                        System.out.println("수정이 완료되었습니다.");
+//                        break; // 수정이 되면 멈춤 (같은 번호일때만 진행됨)
+//                    }
+//                }
+//
+////                if (targetIdx < 0 || targetIdx >= posts.size()) {
+////                    System.out.println("없는 게시물 번호입니다.");
+////                    continue;
+////                }
+//
+//
+//            } else if (commend.equals("delete")) {
+//                System.out.print("삭제할 게시물 번호");
+//                Post selPost = findPostById(posts);
+//
+//                posts.remove(selPost);
+//
+//                if (selPost == null){
+//                    System.out.println();
+//                }
+//            }
+//
+//        }
+//
+//
+//    }
+//
+//    public static Post findPostById(ArrayList<Post> posts){
+//        int targetId = Integer.parseInt(sc.nextLine());
+//        for (Post post : posts) {
+//            if (post.getId() == targetId) {
+//                return post;
+//            }
+//        }
+//            return null;
+//    }
     // return이 메서드를 종료: return 키워드는 메서드를 종료하고 값을 반환합니다.
     // 따라서 for 루프 내에서 일치하는 Post 객체를 찾으면 return post가 호출되고,
     // 메서드가 종료됩니다.
